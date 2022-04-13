@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+<<<<<<< HEAD
 
 
   has_one_attached :profile_image
@@ -15,4 +16,13 @@ class User < ApplicationRecord
     profile_image.variant(resize_to_limit: [100, 100]).processed
   end
 
+=======
+         
+  
+  has_one_attached :profile_image
+  
+  
+  
+  
+>>>>>>> d8df09cf71f562751bc67a949c606e3ef20bd43a
 end
