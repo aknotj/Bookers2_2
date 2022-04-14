@@ -3,26 +3,16 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-<<<<<<< HEAD
-
 
   has_one_attached :profile_image
+  has_many :books, dependent: :destroy
 
-  def get_profile_image
+  def get_profile_image(height, width)
     unless profile_image.attached?
-      file_path = Rails.root.join('app/assets/images/sample-author1.jpg')
+      file_path = Rails.root.join('app/assets/images/default-image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    profile_image.variant(resize_to_limit: [100, 100]).processed
+    profile_image.variant(resize_to_limit: [height, width]).processed
   end
 
-=======
-         
-  
-  has_one_attached :profile_image
-  
-  
-  
-  
->>>>>>> d8df09cf71f562751bc67a949c606e3ef20bd43a
 end
